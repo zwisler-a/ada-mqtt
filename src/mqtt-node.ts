@@ -43,7 +43,7 @@ export class MqttNode {
         console.log(this.url, {username: this.username, password: this.password})
         this.client = await mqtt.connectAsync(this.url, {username: this.username, password: this.password})
         if (this.client?.connected) {
-            this.client.publish(this.topic, value);
+            await this.client.publishAsync(this.topic, value);
         } else {
             console.log('not connected')
         }
